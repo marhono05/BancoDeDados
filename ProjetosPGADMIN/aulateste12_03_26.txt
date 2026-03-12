@@ -1,0 +1,30 @@
+create table paciente (
+id_paci serial,
+cpf_paci char (20) not null,
+nome_paci varchar (40) not null,
+end_paci char (40) not null,
+tel_paci char (11) not null,
+
+constraint pk_paciente primary key (id_paci)
+);
+
+create table medico (
+id_medi serial,
+crm_medi char (10) not null,
+nome_medi varchar (40) not null, 
+cpf_medi varchar (20) not null,
+end_medi char (40) not null,
+tel_medi char (11) not null,
+
+constraint pk_medico primary key (id_medi)
+);
+
+create table enfermeiro (
+id_enfe serial not null,
+nome_enfe varchar (40) not null,-
+cpf_enfe char (20) not null,
+end_enfe char (40) not null,
+tel_enfe char (11) not null,
+
+constraint pk_enfermeiro primary key (id_enfe)
+);

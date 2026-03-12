@@ -1,0 +1,23 @@
+create table departamento (
+id_depa serial,
+desc_depa varchar (30) not null,
+tipo_depa varchar (10) not null,
+
+constraint pk_departamento primary key (id_depa)
+);
+
+create table funcionario (
+id_func serial,
+nome_func char (40) not null,
+cid_func varchar (20) not null, 
+
+constraint pk_funcionario primary key (id_func)
+);
+
+create table escritorio (
+id_escr serial,
+nome_escr char (30) not null,
+end_escri char (50) not null,
+
+constraint pk_escritorio primary key (id_escr)
+);
