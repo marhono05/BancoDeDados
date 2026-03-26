@@ -29,8 +29,8 @@ constraint pk_escritorio primary key (id_escr)
 
 /* Quando for relacionamento N para N , necessário criar outra tabela*/
 create table depa_escr (
-id_escr serial,
-id_depa serial, 
+id_escr Interger,
+id_depa Interger 
 
 constraint pk_depa_escr primary key (id_escr, id_depa),
 constraint fk_departamento_depaescr foreign key (id_depa) references departamento (id_depa),
