@@ -1,0 +1,55 @@
+create table editor (
+id_editor serial,
+nome_editor varchar (40) not null,
+cpf_editor char (10) not null,
+ende_editor char (40) not null,
+tel_editor char (11) not null, 
+
+constraint pk_editor primary key (id_editor)
+);
+
+create table autor (
+id_autor serial,
+nome_autor varchar (40) not null,
+cpf_autor char (10) not null,
+ende_autor char (40) not null,
+idade_autor char (3) not null,
+id_livro Int,
+
+constraint pk_autor primary key (id_autor),
+constraint fk_livro_autor foreign key (id_livro) references livro (id_livro)
+);
+
+create table livro (
+id_livro serial,
+nome_livro varchar (40) not null,
+gene_livro varchar (20) not null,
+num_paginas char (5) not null,
+ano_livro char (4) not null,
+
+constraint pk_livro primary key (id_livro)
+);
+ 
+create table grafica (
+id_grafica serial,
+nome_grafica varchar (40) not null,
+cnpj_grafica char (14) not null,
+ende_grafica char (40) not null,
+tel_grafica char (11) not null,
+
+constraint pk_grafica primary key (id_grafica)
+);
+
+create table editor_autor (
+id_editor Interger,
+id_autor Interger,
+
+constraint pk_editor_autor primary key (id_editor, id_autor) 
+);
+
+create table livro_autor (
+id_livro Int,
+id_autor Int, 
+
+constraint pk_livro_autor primary key (id_livro, id_autor)
+);
