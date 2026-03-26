@@ -17,8 +17,9 @@ constraint pk_quarto primary key (cod_quarto)
 );
 
 create table clie_quar (
-cod_cli serial,
-cod_quarto serial, 
+cod_cli Interger,
+cod_quarto Interger
+
 
 constraint pk_clie_quar primary key (cod_cli, cod_quarto),
 constraint fk_cliente_cliequar foreign key (cod_cli) references cliente (cod_cli),
