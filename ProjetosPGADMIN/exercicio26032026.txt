@@ -41,8 +41,8 @@ constraint pk_grafica primary key (id_grafica)
 );
 
 create table editor_autor (
-id_editor Interger,
-id_autor Interger,
+id_editor Int,
+id_autor Int,
 
 constraint pk_editor_autor primary key (id_editor, id_autor) 
 );
@@ -53,3 +53,17 @@ id_autor Int,
 
 constraint pk_livro_autor primary key (id_livro, id_autor)
 );
+
+
+
+--TESTANDO ALTER TABLE
+alter table autor ADD bairro_autor varchar (30); 
+
+alter table livro ADD teste Int;
+alter table livro drop column teste;
+
+alter table editor rename column nome_editor to NomeEdit; 
+
+alter table autor alter nome_autor type varchar (50);
+
+alter table grafica rename to graficas;
