@@ -67,3 +67,30 @@ alter table editor rename column nome_editor to NomeEdit;
 alter table autor alter nome_autor type varchar (50);
 
 alter table grafica rename to graficas;
+
+--TESTANDO INSERT
+
+insert into autor (nome_autor, cpf_autor, ende_autor, idade_auto) values ('marcos', '9812334865', 'Rua Anjos', '33');
+insert into autor (nome_autor, cpf_autor, ende_autor, idade_autor) values ('pedro', '9932764846', 'Rua Afonso', '27');
+insert into autor (nome_autor, cpf_autor, ende_autor, idade_autor) values ('leticia', '5719439929', 'Travessa Verde', '24');
+
+insert into editor (nome_editor, cpf_editor, ende_editor, tel_editor) values ('cristian', '7780987668', 'Rua Caffero', '11982095734');
+insert into editor (nome_editor, cpf_editor, ende_editor, tel_editor) values ('sophia', '6692397668', 'Avenida Pedro Dias', '17982985672');
+insert into editor (nome_editor, cpf_editor, ende_editor, tel_editor) values ('debora', '5590988991', 'Rua Marechal Peixoto', '11986844211');
+
+insert into grafica (nome_grafica, cnpj_grafica, ende_grafica, tel_grafica) values ('sorisso maroto', '46669214000156', 'Rua Maria', '17911368834');
+insert into grafica (nome_grafica, cnpj_grafica, ende_grafica, tel_grafica) values ('dia nublado', '95370450000182', 'Rua Escafedeu', '11997364679');
+insert into grafica (nome_grafica, cnpj_grafica, ende_grafica, tel_grafica) values ('pedra dura', '47067880000187', 'Rua Judas', '12988921359');
+
+insert into livro (nome_livro, gene_livro, num_paginas, ano_livro) values ('guia de transito', 'educativo', '123', '2015');
+insert into livro (nome_livro, gene_livro, num_paginas, ano_livro) values ('as aventuras de tintim', 'infantil', '200', '2003');
+insert into livro (nome_livro, gene_livro, num_paginas, ano_livro) values ('efeitos de uma pessima alimentacao', 'educativo', '97', '2009'), ;
+
+
+
+select * from livro;
+delete from livro where id_livro = 6
+select * from autor;
+update autor set id_livro = 3 where id_autor = 3
+select * from editor;
+select * from grafica;
