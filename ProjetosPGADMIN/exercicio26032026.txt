@@ -70,7 +70,7 @@ alter table grafica rename to graficas;
 
 --TESTANDO INSERT
 
-insert into autor (nome_autor, cpf_autor, ende_autor, idade_auto) values ('marcos', '9812334865', 'Rua Anjos', '33');
+insert into autor (nome_autor, cpf_autor, ende_autor, idade_autor) values ('marcos', '9812334865', 'Rua Anjos', '33');
 insert into autor (nome_autor, cpf_autor, ende_autor, idade_autor) values ('pedro', '9932764846', 'Rua Afonso', '27');
 insert into autor (nome_autor, cpf_autor, ende_autor, idade_autor) values ('leticia', '5719439929', 'Travessa Verde', '24');
 
@@ -84,7 +84,7 @@ insert into grafica (nome_grafica, cnpj_grafica, ende_grafica, tel_grafica) valu
 
 insert into livro (nome_livro, gene_livro, num_paginas, ano_livro) values ('guia de transito', 'educativo', '123', '2015');
 insert into livro (nome_livro, gene_livro, num_paginas, ano_livro) values ('as aventuras de tintim', 'infantil', '200', '2003');
-insert into livro (nome_livro, gene_livro, num_paginas, ano_livro) values ('efeitos de uma pessima alimentacao', 'educativo', '97', '2009'), ;
+insert into livro (nome_livro, gene_livro, num_paginas, ano_livro) values ('efeitos de uma pessima alimentacao', 'educativo', '97', '2009');
 
 
 
@@ -94,3 +94,46 @@ select * from autor;
 update autor set id_livro = 3 where id_autor = 3
 select * from editor;
 select * from grafica;
+
+
+-- ALTERE O ENDEREÇO DO AUTOR "2"
+alter table autor alter ende_autor type varchar (60);
+
+update autor set ende_autor = 'rua manoel gonçalves, 555 - bairro universitário'
+where id_autor = 2 
+
+
+-- ALTERE O NOME DO PRIMEIRO LIVRO 
+
+update livro set nome_livro = 'história sem fim'
+where id_livro = 1
+
+
+-- DELETE O LIVRO DO CÓDIGO "3"
+
+delete from livro
+where id_livro = 3
+
+-- INSIRA O CAMPO VALOR NO LIVRO
+
+
+alter table livro add valor_livro numeric(15,2)
+
+
+-- INSIRA O VALOR "29,90" EM TODOS OS LIVROS
+
+update livro set valor_livro = 29.90;
+
+
+-- PRINCIPIOS DO SELECT
+
+select nome_livro from livro
+where gene_livro = 'infantil';
+--buscar o nome dos livros com o genero infantil
+
+select nome_livro as "Nome:" from livro
+where gene_livro = 'infantil';
+-- o AS muda o nome na consulta, para deixar mais apresentável
+
+
+
