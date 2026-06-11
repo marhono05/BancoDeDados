@@ -253,15 +253,128 @@ insert into item_do_pedido values (137,13,8);
 
 
 
--- selecione os campos nome do cliente, endereço e estado de todos os clientes
+/* 1. Selecione os campos: nome do cliente, endereço e estado de todos os clientes */
+select * from cliente;
 select nome_cliente, endereco, uf from cliente;
 
--- liste todos os vendedores
+/* 2. Liste todos os vendedores */
 select * from vendedor;
 
---liste os campos código do produto e quantidade da tabela item do produto
-select codigo_vendedor from vendedor;
+/* 3. Liste os campos: código do produto e quantidade da tabela item_do_produto */
+select codigo_produto, quantidade from item_do_pedido;
 
---liste o campo código do cliente da tabela pedidos e elimine as linhas duplicadas
+/* 4. Liste o campo codigo do cliente da tabela pedidos e elimine as linhas duplicadas (distinct) */
 select distinct codigo_cliente from pedido;
+
+/* 5. Selecione os campos codigo do produto, descrição do produto e valor unitario
+e altere a linha de cabeçalho dos campos selecionado*/
+select * from produto;
+select 
+codigo_produto as "Código do Produto", 
+descricao_produto as "Descrição do Produto", 
+val_unit as "Valor Unitário"
+from produto;
+
+/* 7. quais são as cidades que a empresa possuí clientes */
+select * from cliente;
+select * from pedido;
+
+select distinct cidade as "Cidade de Clientes"
+from cliente, pedido
+where cliente.codigo_cliente = pedido.codigo_cliente;
+
+select distinct cidade
+from cliente;
+
+/* 8. Liste da tabela produto o campo descrição e faça o produto do campo valor unitario
+ por 1.3, ou seja, 30% de acrescimo */
+select * from produto;
+
+select descricao_produto as "Descrição do Produto", val_unit as "Valor Unitário"
+from produto;
+
+select descricao_produto as "Descrição do Produto", val_unit * 1.3 as "Valor Unitário"
+from produto;
+
+/* 9. Elabore uma consulta que mostre o código do cliente e o prazo de entrega prorrogado
+ por mais 3 dias da tabela pedido */
+select * from pedido;
+
+select codigo_cliente as "Código do Cliente", prazo_entrega + 3 as "Prazo de Entrega"
+from pedido;
+
+/* 10. Liste o nome do vendedor e a faixa de comissão dos vendedores que possuem salario fixo maior que 4000 */
+select * from vendedor;
+
+select nome_vendedor as "Nome do Vendedor", faixa_comissao as "Faixa de comissão"
+from vendedor
+where salario_fixo > 4000;
+
+/* 11. Selecione os produtos cujo as unidades do produto seja igual a kg */
+select * from produto;
+
+select *
+from produto
+where unidade = 'Kg';
+
+/* 12. Faça uma consulta que mostre o nome do cliente e a cidade, quando
+um estado for igual a SP ou cidade igual a Londrina da tabela cliente */
+select * from cliente;
+
+select nome_cliente as "Nome do Cliente", cidade as "Cidade"
+from cliente
+where uf = 'SP' or cidade = 'Londrina';
+
+/* 13. Elabore uma consulta que mostre o numero do pedido e prazo de entrega dos pedidos que tiverem
+o código do cliente igual a 720 e o código do vendedor igual a 101 */
+select * from pedido;
+
+select num_pedido as "Número do Pedido", prazo_entrega as "Prazo de Entrega"
+from pedido
+where codigo_cliente = 720 AND codigo_vendedor = 101;
+
+/* 14. Selecione da tabela item do pedido o campo número do pedido quando a quantidade
+ for maior ou igual a 30 e elimine as linhas duplicadas */
+
+select * from item_do_pedido;
+
+select distinct num_pedido as "Número do Pedido"
+from item_do_pedido
+where quantidade >= 30;
+
+/* 15. Liste todos os vendedores exceto os que possuem faixa de comissão igual a C */
+
+select *
+from vendedor
+where not faixa_comissao = 'C';
+
+/* 16.  Liste as descrições dos produtos, exceto os que possuem a unidade do produto = M */
+
+select descricao_produto from produto where not unidade = 'M';
+
+
+/* 17. Crie uma consulta que mostre os nomes dos vendedores que possuem o salário fixo na faixa de 1000 reais até 3000. */
+
+select nome_vendedor from vendedor where salario_fixo between 1000 and 3000;
+
+
+/* 18. Selecione os campos número do pedido e prazo de entrega de todos os pedidos que possuem o prazo entre 15 e 25 dias. */
+
+select num_pedido as "Número do Pedido", prazo_entrega as "Prazo de entrega" from pedido where prazo_entrega between 15 and 25;
+
+/* 19. Localizem os registros de vendedores que não comecem com a letra J */
+
+select codigo_vendedor as "Código do Vendedor", nome_vendedor as "Nome do vendedor", salario_fixo as "Salário fixo", faixa_comissao as "Faixa de comissão"
+from vendedor where not like nome_vendedor = 'J%';
+
+/* 20. Localizem os registros de clientes cujo os nomes contenham as letras "IO" */
+
+select codigo_cliente, nome_cliente, endereco, cidade, cep, uf, cnpj, ie from cliente where nome_cliente = 'IO';
+
+
+/* 21..... */
+
+/* 22. Mostre a descrição dos produtos quando a unidade não for igual a M, Kg */
+
+select descricao_produto from produto where unidade not in ('M','Kg');
 
