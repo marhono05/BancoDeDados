@@ -378,3 +378,42 @@ select codigo_cliente, nome_cliente, endereco, cidade, cep, uf, cnpj, ie from cl
 
 select descricao_produto from produto where unidade not in ('M','Kg');
 
+/* 23. Selecione os vendedores que não possuem faixa de comissão */
+
+select faixa_comissao from vendedor where faixa_comissao is null;
+
+/* 24. Liste os clientes que possuem inscrição estadual */
+
+select codigo_cliente as "ID", nome_cliente as "Nome do cliente" from cliente where ie is not null;
+
+/* 25. Crie uma consulta que exiba os clientes, ordenados pelo nome do cliente */
+
+select codigo_cliente as "ID", nome_cliente as "Nome do cliente" from cliente order by nome_cliente;
+
+/*26. Faça uma consulta na tabela vendedor que mostre nome do vendedor e o salário ordenados pelo nome do vendedor */
+
+select nome_vendedor as "Nome do vendedor", salario_fixo as "Salario fixo" from vendedor order by nome_vendedor;
+
+/* 27. Mostre o nome do cliente e o endereço dos clientes do estado de SP, ordenados pelo código do cliente */
+
+select codigo_cliente as "Código", nome_cliente as "Nome do cliente", endereco as "Endereço" from cliente where uf = 'SP' order by codigo_cliente;
+
+/* 31. Mostre o produto que possue o maior e o menor preço */
+
+select min(val_unit) as "Menor preço", max(val_unit) as "Maior preço" from produto;
+
+/* 34. Exiba o maior valor e a soma do salário dos vendedores que possua faixa de comissão 'A' */
+select sum(salario_fixo) as "Soma do salário", max(salario_fixo) from vendedor where faixa_comissao = 'A';
+select * from vendedor;
+
+/* 35. Mostre a quantidade total pedida, para o produto 'Papel' de Código '77' na Tabela 'Item do Pedido' */
+select sum(quantidade) as "Quantidade total pedida" from  item_do_pedido where codigo_produto = '77';
+
+/* 36. Quantos produtos possuem o valor unitário < 2 */
+select count(val_unit) as "Quantidade de produtos" from produto where val_unit < '2';
+select * from produto;
+
+/* 37. Liste a quantidade de cliente que cada estado contém (Agrupando-os por estado) */
+select count(*) as "Clientes por estado", uf as "Estado" from cliente group by (uf); 
+select * from cliente
+
