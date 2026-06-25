@@ -417,3 +417,41 @@ select * from produto;
 select count(*) as "Clientes por estado", uf as "Estado" from cliente group by (uf); 
 select * from cliente
 
+/* 45. */ 
+select c.nome_cliente, c.cidade
+from cliente C, pedido P
+where c.codigo_cliente=p.codigo_cliente and p.prazo_entrega>25
+
+/* 46. Apresente a descrição, a unidade e a quantidade dos produtos pedidos que possuem a quantidade maior do que 40 */ 
+select * from produto
+select * from item_do_pedido
+
+select p.descricao_produto, p.unidade, i.quantidade
+from produto p
+inner join item_do_pedido I
+on p.codigo_produto = i.codigo_produto
+where i.quantidade >40
+order by p.descricao_produto;
+
+/* 50. Mostre os vendedores ordenados que emitram pedidos com prazo de entrega superiores a 15 dias e tenham salários fixos iguais ou superiores a 1000 reais */
+
+select * from vendedor
+select * from pedido
+select v.nome_vendedor, p.prazo_entrega, v.salario_fixo
+from vendedor V
+inner join pedido P
+on v.codigo_vendedor = p.codigo_vendedor
+where p.prazo_entrega > 15 and v.salario_fixo >= 1000
+order by v.nome_vendedor;
+
+
+/*51. Quais os clientes tem o prazo de entrega superior a 15 dias e pertecem aos estados de sp ou rj */
+select * from cliente
+select * from pedido
+
+select c.nome_cliente, p.prazo_entrega, c.uf
+from cliente C
+inner join pedido P
+on c.codigo_cliente = p.codigo_cliente
+where p.prazo_entrega > 15 and c.uf in ('SP','RJ')
+order by c.nome_cliente;
